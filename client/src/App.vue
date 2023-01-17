@@ -3,7 +3,7 @@ import HelloWorld from './components/HelloWorld.vue';
 </script>
 
 <template>
-  <HelloWorld msg="Temperature converter" />
+  <HelloWorld msg="Temperature Converter" />
 </template>
 
 <style scoped></style>
