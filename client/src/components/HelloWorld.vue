@@ -8,4 +8,8 @@ defineProps({
   <h1>{{ msg }}</h1>
 </template>
 
-<style scoped></style>
+<style scoped>
+h1 {
+  color: white;
+}
+</style>
