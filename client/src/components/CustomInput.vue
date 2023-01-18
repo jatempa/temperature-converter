@@ -10,14 +10,14 @@ export default {
     type="number"
     :value="modelValue"
     @input="$emit('update:modelValue', $event.target.value)"
-    placeholder="Enter the temperature"
+    placeholder="Enter the temperature value ..."
   />
 </template>
 
 <style scoped>
 input {
-  height: 50px;
-  width: 100%;
+  flex-basis: 90%;
+  height: inherit;
   font-size: 2rem;
 }
 </style>
