@@ -23,7 +23,7 @@ body {
 }
 
 #app {
-  border: 3px solid;
+  background-color: rgb(8, 8, 202);
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
