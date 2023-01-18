@@ -1,23 +1,15 @@
 <script>
 export default {
-  data: () => ({
-    temperatureVal: '',
-  }),
-  emits: ['handle-change'],
-  methods: {
-    getTemperatureVal() {
-      this.$emit('handle-change', this.temperatureVal);
-      this.temperatureVal = '';
-    },
-  },
+  props: ['modelValue'],
+  emits: ['update:modelValue'],
 };
 </script>
 
 <template>
   <input
-    :value="temperatureVal"
-    @input="temperatureVal = $event.target.value"
-    @keyup.enter="getTemperatureVal"
+    type="number"
+    :value="modelValue"
+    @input="$emit('update:modelValue', $event.target.value)"
     placeholder="Enter the temperature"
   />
 </template>
