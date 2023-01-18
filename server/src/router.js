@@ -21,7 +21,7 @@ router.post('/celsius-to-fahrenheit', (req, res) => {
     res.status(200).send({ ...response, result });
   } catch (e) {
     console.log(e);
-    res.status(404).send({ ...response, error: `${e.name}: ${e.message}` });
+    res.status(400).send({ ...response, error: `${e.name}: ${e.message}` });
   }
 });
 
@@ -36,7 +36,7 @@ router.post('/fahrenheit-to-celsius', (req, res) => {
     const result = ((temperature - 32) * 5) / 9;
     res.status(200).send({ ...response, result });
   } catch (e) {
-    res.status(404).send({ ...response, error: `${e.name}: ${e.message}` });
+    res.status(400).send({ ...response, error: `${e.name}: ${e.message}` });
   }
 });
 
