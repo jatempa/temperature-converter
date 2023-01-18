@@ -76,10 +76,12 @@ const formattedResult = computed(() => {
     <CustomInput v-model.number="state.temperature" />
     <CustomSelect v-model="state.unit" />
   </div>
-  <CustomButton @convert-temperature="convertTemperature">Convert</CustomButton>
-  <CustomLabel v-if="state.result || state.result === 0">{{
-    formattedResult
-  }}</CustomLabel>
+  <CustomButton @convert-temperature="convertTemperature">
+    Convert
+  </CustomButton>
+  <CustomLabel v-if="state.result || state.result === 0">
+    {{ formattedResult }}
+  </CustomLabel>
 </template>
 
 <style scoped>
