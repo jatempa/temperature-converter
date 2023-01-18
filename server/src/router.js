@@ -9,11 +9,11 @@ const response = {
   error: '',
 };
 
-router.get('/celsius-to-fahrenheit', (req, res) => {
+router.post('/celsius-to-fahrenheit', (req, res) => {
   const { temperature } = req.body;
 
   try {
-    if (!temperature || typeof temperature !== 'number') {
+    if (temperature === null || typeof temperature !== 'number') {
       throw new Error(errorMessage);
     }
 
@@ -25,11 +25,11 @@ router.get('/celsius-to-fahrenheit', (req, res) => {
   }
 });
 
-router.get('/fahrenheit-to-celsius', (req, res) => {
+router.post('/fahrenheit-to-celsius', (req, res) => {
   const { temperature } = req.body;
 
   try {
-    if (!temperature || typeof temperature !== 'number') {
+    if (temperature === null || typeof temperature !== 'number') {
       throw new Error(errorMessage);
     }
 
