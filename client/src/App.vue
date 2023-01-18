@@ -37,7 +37,7 @@ const convertTemperature = async () => {
       .then((data) => data.json())
       .then((temperature) => temperature);
 
-    const { result, error } = response;
+    const { result } = response;
 
     state.result = result;
   } else if (state.unit === '°F') {
@@ -48,7 +48,7 @@ const convertTemperature = async () => {
       .then((data) => data.json())
       .then((temperature) => temperature);
 
-    const { result, error } = response;
+    const { result } = response;
 
     state.result = result;
   }
