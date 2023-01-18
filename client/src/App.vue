@@ -6,6 +6,8 @@ import CustomLabel from './components/CustomLabel.vue';
 import CustomSelect from './components/CustomSelect.vue';
 import Header from './components/Header.vue';
 
+const BASE_API = 'http://localhost:8080/api';
+
 const state = reactive({
   temperature: '',
   unit: '°C',
@@ -13,13 +15,42 @@ const state = reactive({
   result: null,
 });
 
-const convertTemperature = () => {
+const options = {
+  method: 'POST',
+  mode: 'cors',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: null,
+};
+
+const convertTemperature = async () => {
   if (state.temperature.length === 0) return;
 
+  const payload = JSON.stringify({ temperature: state.temperature });
+
   if (state.unit === '°C') {
-    state.result = (state.temperature * 9) / 5 + 32;
+    const response = await fetch(`${BASE_API}/celsius-to-fahrenheit`, {
+      ...options,
+      body: payload,
+    })
+      .then((data) => data.json())
+      .then((temperature) => temperature);
+
+    const { result, error } = response;
+
+    state.result = result;
   } else if (state.unit === '°F') {
-    state.result = ((state.temperature - 32) * 5) / 9;
+    const response = await fetch(`${BASE_API}/fahrenheit-to-celsius`, {
+      ...options,
+      body: payload,
+    })
+      .then((data) => data.json())
+      .then((temperature) => temperature);
+
+    const { result, error } = response;
+
+    state.result = result;
   }
 };
 
