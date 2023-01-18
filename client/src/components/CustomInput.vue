@@ -19,5 +19,6 @@ input {
   flex-basis: 90%;
   height: inherit;
   font-size: 2rem;
+  text-align: right;
 }
 </style>
