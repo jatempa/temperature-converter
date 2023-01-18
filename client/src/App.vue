@@ -24,32 +24,27 @@ const options = {
   body: null,
 };
 
+const customFetch = async (endpoint, payload) => {
+  const response = await fetch(`${BASE_API}/${endpoint}`, {
+    ...options,
+    body: payload,
+  })
+    .then((data) => data.json())
+    .then((temperature) => temperature);
+
+  return response;
+};
+
 const convertTemperature = async () => {
   if (state.temperature.length === 0) return;
 
   const payload = JSON.stringify({ temperature: state.temperature });
 
   if (state.unit === '°C') {
-    const response = await fetch(`${BASE_API}/celsius-to-fahrenheit`, {
-      ...options,
-      body: payload,
-    })
-      .then((data) => data.json())
-      .then((temperature) => temperature);
-
-    const { result } = response;
-
+    const { result } = await customFetch('celsius-to-fahrenheit', payload);
     state.result = result;
   } else if (state.unit === '°F') {
-    const response = await fetch(`${BASE_API}/fahrenheit-to-celsius`, {
-      ...options,
-      body: payload,
-    })
-      .then((data) => data.json())
-      .then((temperature) => temperature);
-
-    const { result } = response;
-
+    const { result } = await customFetch('fahrenheit-to-celsius', payload);
     state.result = result;
   }
 };
