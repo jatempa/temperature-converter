@@ -53,7 +53,6 @@ const formattedResult = computed(() => {
 
 <style scoped>
 #inputs-container {
-  margin: 1.25em 0px;
   height: 50px;
   display: flex;
   justify-content: center;
