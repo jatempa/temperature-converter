@@ -17,6 +17,7 @@ export default {
 
 <style scoped>
 button {
+  margin-top: 0.75em;
   width: 100%;
   height: 50px;
   font-size: 2rem;
