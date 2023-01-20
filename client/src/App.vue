@@ -67,13 +67,13 @@ const formattedResult = computed(() => {
 
 <template>
   <Header>Temperature Converter</Header>
-  <div id="inputs-container">
-    <CustomInput v-model.number="state.temperature" />
-    <CustomSelect v-model="state.unit" />
-  </div>
-  <CustomButton @convert-temperature="convertTemperature">
-    Convert
-  </CustomButton>
+  <form @submit.prevent="convertTemperature">
+    <div id="inputs-container">
+      <CustomInput v-model.number="state.temperature" />
+      <CustomSelect v-model="state.unit" />
+    </div>
+    <CustomButton>Convert</CustomButton>
+  </form>
   <CustomLabel v-if="state.result || state.result === 0">
     {{ formattedResult }}
   </CustomLabel>

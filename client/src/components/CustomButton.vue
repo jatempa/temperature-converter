@@ -1,16 +1,5 @@
-<script>
-export default {
-  emits: ['convert-temperature'],
-  methods: {
-    convertTemperature() {
-      this.$emit('convert-temperature');
-    },
-  },
-};
-</script>
-
 <template>
-  <button @click="convertTemperature">
+  <button>
     <slot></slot>
   </button>
 </template>
