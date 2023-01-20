@@ -1,6 +1,5 @@
 <script setup>
 import { computed, reactive } from 'vue';
-import CustomButton from './components/CustomButton.vue';
 import CustomInput from './components/CustomInput.vue';
 import CustomLabel from './components/CustomLabel.vue';
 import CustomSelect from './components/CustomSelect.vue';
@@ -72,7 +71,7 @@ const formattedResult = computed(() => {
       <CustomInput v-model.number="state.temperature" />
       <CustomSelect v-model="state.unit" />
     </div>
-    <CustomButton>Convert</CustomButton>
+    <button type="submit">Convert</button>
   </form>
   <CustomLabel v-if="state.result || state.result === 0">
     {{ formattedResult }}
@@ -86,5 +85,18 @@ const formattedResult = computed(() => {
   display: flex;
   justify-content: center;
   gap: 5px;
+}
+
+button {
+  margin-top: 0.75em;
+  width: 100%;
+  height: 50px;
+  font-size: 2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: white;
+  background-color: rgb(87, 174, 245);
+  border: none;
+  outline: none;
 }
 </style>
