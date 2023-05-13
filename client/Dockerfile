@@ -1,21 +1,20 @@
-FROM node:alpine as buildapp
+# It uses node:alpine as the base image for the Node.js application
+FROM node:alpine
 
+# Creating the working directory named `app`
 WORKDIR /app
 
-COPY package*.json ./
+# Copying all the tools and dependencies in the package.json file to the working directory `app`
+COPY package.json .
 
-RUN npm ci
+#Installing all the tools and dependencies in the container
+RUN npm install
 
+#Copying all the application source code and files to the working directory `app`
 COPY . .
 
-RUN npm run build
+#Exposing the container to run on this port 3000
+EXPOSE 3000
 
-FROM nginx:alpine
-
-ADD ./config/default.conf /etc/nginx/conf.d/default.conf
-
-COPY --from=buildapp /app/dist /var/www/app/
-
-EXPOSE 80
-
-CMD [ "nginx", "-g", "daemon off;" ]
+#Command to start the Docker container for the frontend Vue JS application
+CMD ["npm", "run", "dev"]
