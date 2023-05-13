@@ -5,7 +5,9 @@ import CustomLabel from './components/CustomLabel.vue';
 import CustomSelect from './components/CustomSelect.vue';
 import Header from './components/Header.vue';
 
-const BASE_API = `${import.meta.env.VITE_API_URL}/api`;
+const BASE_API = `http://${import.meta.env.VITE_API_HOST}:${
+  import.meta.env.VITE_API_URL
+}/api`;
 
 const state = reactive({
   temperature: '',
